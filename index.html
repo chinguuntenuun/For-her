@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our 1 Month</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #5a0f1f, #7a1c2e, #3b0a14);
+      color: #f5d7dc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+      color: #ff9bb0;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-120vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(700px, 100%);
+      background: rgba(30, 5, 10, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #7a1c2e;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+    }
+
+    .sub {
+      font-size: 18px;
+      margin: 14px auto 22px;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: #ff9bb0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 24px 0 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.2);
+    }
+
+    .primary {
+      background: #b03045;
+      color: white;
+    }
+
+    .letter-box {
+      margin-top: 20px;
+      width: 100%;
+      min-height: 150px;
+      padding: 16px;
+      border-radius: 16px;
+      border: none;
+      resize: none;
+      font-size: 16px;
+      background: rgba(255,255,255,0.9);
+      color: #3b0a14;
+      outline: none;
+    }
+
+    .message-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { transform: scale(0.8); opacity: 0.3; }
+      50% { transform: scale(1.5); opacity: 1; }
+    }
+
+    @media (max-width: 520px) {
+      .card { padding: 24px 18px; }
+      .sub, .message-box { font-size: 16px; }
+      button { width: 100%; }
+      .buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="card">
+    <div class="badge">Happy 1 Month Anniversary</div>
+    <h1>Siilend zoriulav 💗💗</h1>
+    
+
+    <div class="buttons">
+      <button class="primary" onclick="showMessage()">End dar</button>
+    </div>
+
+    <div class="letter-box">
+      Iim hurdan neg sar bolchih gej dee ❤
+      Ci mnii udriig gereltuulj, iluu jargaltai, hugjiltei bolgodog shuu.
+      Bi anh cmtai uerhene gedgiig tusuulj caddgui bailaaa.
+      Hervee hetsuu uyiig davan tuulj baigaa bol bi urgelj cmd tuslah bolnoo helj bgaraii zaaaa.
+      I'm really glad to have you and I hope we make even more memories together.
+      I love youuuuu 💗💗
+    </div>
+
+    <div class="message-box" id="messageBox">
+      💌
+    </div>
+
+    <div class="footer">
+      Hairtaishuuuu
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "Bitgii buuj uguureiii ci cadnaaa ❤",
+      "Ci her huurhn nudtei geechh",
+      "Ci huurhn shuuu zaaa",
+      "Ci mnii udriin hamgiin durtai heseg",
+      "Bi urgelj cmaar baharhdg shuuu"
+    ];
+
+    function pick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function showMessage() {
+      document.getElementById('messageBox').textContent = pick(messages);
+    }
+
+    const hearts = document.getElementById('hearts');
+    for (let i = 0; i < 24; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = Math.random() > 0.5 ? '❤' : '💗';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+      heart.style.animationDelay = (Math.random() * 5) + 's';
+      heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+      hearts.appendChild(heart);
+    }
+
+    for (let i = 0; i < 18; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = (Math.random() * 2) + 's';
+      hearts.appendChild(sparkle);
+    }
+  </script>
+</body>
+</html>
